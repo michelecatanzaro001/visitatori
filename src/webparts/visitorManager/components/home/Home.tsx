@@ -30,7 +30,7 @@ const App = () => {
  
 export default class Home extends React.Component<any,any>  {
 
-    constructor(prop) {
+    constructor(prop: any) {
         super(prop);
 
         // Instantiate the Router

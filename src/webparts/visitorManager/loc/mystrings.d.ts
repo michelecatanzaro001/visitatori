@@ -1,6 +1,7 @@
 declare interface IVisitorManagerWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
+  AbsoluteurlFieldLabel: string;
   DescriptionFieldLabel: string;
 }
 

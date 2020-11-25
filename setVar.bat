@@ -1,0 +1,1 @@
+C:\LAB\SERVER\node-v10.23.0-win-x64\nodevars.bat
