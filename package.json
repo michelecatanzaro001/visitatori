@@ -22,9 +22,13 @@
     "@pnp/logging": "^2.0.12",
     "@pnp/odata": "^2.0.12",
     "@pnp/sp": "^2.0.12",
+    "@uirouter/react": "^1.0.3",
+    "@uirouter/redux": "^1.0.0",
     "office-ui-fabric-react": "6.214.0",
     "react": "16.8.5",
-    "react-dom": "16.8.5"
+    "react-dom": "16.8.5",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5"
   },
   "devDependencies": {
     "@types/react": "16.8.8",

@@ -10,6 +10,7 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import * as strings from 'VisitorManagerWebPartStrings';
 import VisitorManager from './components/VisitorManager';
 import { IVisitorManagerProps } from './components/IVisitorManagerProps';
+import Home from './components/Home';
 
 export interface IVisitorManagerWebPartProps {
   description: string;
@@ -17,15 +18,21 @@ export interface IVisitorManagerWebPartProps {
 
 export default class VisitorManagerWebPart extends BaseClientSideWebPart<IVisitorManagerWebPartProps> {
 
+
+  
+
   public render(): void {
+
     const element: React.ReactElement<IVisitorManagerProps> = React.createElement(
       VisitorManager,
       {
         description: this.properties.description
       }
     );
+    console.log ( 'VisitorManagerWebPart -> render');
+    let el :  React.ReactElement =  React.createElement( Home );
 
-    ReactDom.render(element, this.domElement);
+    ReactDom.render(el , this.domElement);
   }
 
   protected onDispose(): void {
