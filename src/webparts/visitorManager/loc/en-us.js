@@ -1,8 +1,8 @@
 define([], function() {
   return {
-    "PropertyPaneDescription": "Description",
-    "BasicGroupName": "Group Name",
-    "AbsoluteUrlFieldLabel": "Site",    
+    "PropertyPaneDescription": "",
+    "BasicGroupName": "",
+    "AbsoluteurlFieldLabel": "Site",    
     "DescriptionFieldLabel": "Description Field"
   }
 });

@@ -1,9 +1,13 @@
 import { ServiceKey, ServiceScope } from "@microsoft/sp-core-library";
 import { PageContext } from "@microsoft/sp-page-context";
 import { AadTokenProviderFactory } from "@microsoft/sp-http";
-import { sp } from "@pnp/sp";
-import "@pnp/sp/webs";
-import "@pnp/sp/lists/web";
+ 
+
+import { sp  } from "@pnp/sp";
+import { List, IListEnsureResult, IList } from "@pnp/sp/lists";
+// import "@pnp/sp/webs";
+// import "@pnp/sp/lists/web";
+ 
 
 export interface IRichiesteVMServices {
     configure(webUrl: string, listId: string);
@@ -55,4 +59,7 @@ export class RichiesteVMService {
     public getLists(): Promise<any[]> {
         return sp.web.lists();
     }
+
+ 
+  
 }

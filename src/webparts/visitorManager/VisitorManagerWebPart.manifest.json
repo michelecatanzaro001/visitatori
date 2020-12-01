@@ -5,10 +5,10 @@
   "componentType": "WebPart",
   "version": "*",
   "manifestVersion": 2,
+  "hiddenFromToolbox": false,
   "requiresCustomScript": false,
   "supportedHosts": [
-    "SharePointWebPart",
-    "SharePointFullPage"
+    "SharePointWebPart","SharePointFullPage","TeamsPersonalApp", "TeamsTab"
   ],
   "preconfiguredEntries": [
     {
@@ -17,14 +17,14 @@
         "default": "Other"
       },
       "title": {
-        "default": "Visitor Manager SOSE"
+        "default": "Visitor Manager"
       },
       "description": {
         "default": "Visitor Manager description"
       },
       "officeFabricIconFontName": "Page",
       "properties": {
-        "absoluteurl": "asdasdasd",
+        "absoluteurl": "https://catanza.sharepoint.com/sites/devwebparts",
         "description": "HelloWorld"
       }
     }
