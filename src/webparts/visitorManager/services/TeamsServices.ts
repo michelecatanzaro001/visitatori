@@ -1,8 +1,9 @@
 import { ServiceKey, ServiceScope } from '@microsoft/sp-core-library';
 import { MSGraphClientFactory, MSGraphClient } from '@microsoft/sp-http';
+import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
 interface ITeamsServices {
-    getMyDetails(): Promise<JSON>;
+    getMyDetails(): Promise< MicrosoftGraph.User>;
 }
 
 export class TeamsServices  implements ITeamsServices {
@@ -18,10 +19,12 @@ export class TeamsServices  implements ITeamsServices {
         });
     }
 
-    public getMyDetails(): Promise<JSON> {
-        return new Promise<JSON>((resolve, reject) => {
-            this._msGraphClientFactory.getClient().then((_msGraphClient: MSGraphClient) => {
-                _msGraphClient.api('/me').get((error, user: JSON, rawResponse?: any) => {
+    public getMyDetails(): Promise< MicrosoftGraph.User> {
+        return new Promise< MicrosoftGraph.User >((resolve, reject) => {
+            this._msGraphClientFactory.getClient()
+            .then((_msGraphClient: MSGraphClient) => {
+                _msGraphClient.api('/me')
+                .get((error, user:  MicrosoftGraph.User , rawResponse?: any) => {
                     resolve(user);
                 });
             });

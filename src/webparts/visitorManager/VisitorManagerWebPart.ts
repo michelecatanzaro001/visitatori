@@ -48,10 +48,11 @@ export default class VisitorManagerWebPart extends BaseClientSideWebPart<IVisito
           service.configure(ctx.pageContext.web.absoluteUrl,  this.properties.absoluteurl );
         });
         
-        // Must return a resolved promise 
-        // (useless here but needed in case on async needs in the config process)
+
         startup.registerScopedService(TeamsServices.serviceKey, TeamsServices);
         
+        // Must return a resolved promise 
+        // (useless here but needed in case on async needs in the config process)     
         return Promise.resolve();
       });
     }

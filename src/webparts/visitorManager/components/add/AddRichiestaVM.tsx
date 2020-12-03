@@ -150,7 +150,7 @@ async function fetchNewTextC(a, b) {
     //  formik.setFieldValue( "name" , "textC"); 
       setCount(1); 
       ts.getMyDetails().then((res) => {
-        formik.setFieldValue( "nome" ,  res["displayName"] );     
+        formik.setFieldValue( "nome" ,  res.displayName );     
       })
   };
     
