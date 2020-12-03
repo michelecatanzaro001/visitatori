@@ -17,15 +17,15 @@
         "default": "Other"
       },
       "title": {
-        "default": "Visitor Manager"
+        "default": "V Manager"
       },
       "description": {
-        "default": "Visitor Manager description"
+        "default": "V description"
       },
       "officeFabricIconFontName": "Page",
       "properties": {
         "absoluteurl": "https://catanza.sharepoint.com/sites/devwebparts",
-        "description": "HelloWorld"
+        "description": "V description"
       }
     }
   ]

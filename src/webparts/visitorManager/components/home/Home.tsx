@@ -9,6 +9,7 @@ import { createRouterMiddleware, routerReducer } from '@uirouter/redux';
 import { ConnectedUIRouter } from '@uirouter/redux/lib/react';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { AddRichiestaVM } from '../add/AddRichiestaVM';
 
  
 const Hello = () => <h3>hello world</h3>;
@@ -16,8 +17,8 @@ const About = () => <h3>Its the UI-Router hello world app!</h3>;
 
 const App = () => {
   const activeClass = "active";
-  const helloSref = useSrefActive("hello", null, activeClass);
-  const aboutSref = useSrefActive("about", null, activeClass);
+  // const helloSref = useSrefActive("hello", null, activeClass);
+  // const aboutSref = useSrefActive("about", null, activeClass);
 
   return (
     <div>
@@ -52,7 +53,8 @@ export default class Home extends React.Component<any,any>  {
             store : store,
             router : router,
             helloState : { name: "hello" , component: Hello },
-            aboutState : { name: "about" , component: About }
+            aboutState : { name: "about" , component: About },
+            addRichiesta : { name: "addRichiesta" , component: AddRichiestaVM },
         }
     }
     public render(): React.ReactElement  {
@@ -61,7 +63,7 @@ export default class Home extends React.Component<any,any>  {
          <ConnectedUIRouter
              router={this.state.router}
              plugins={[memoryLocationPlugin]}
-             states={[this.state.helloState, this.state.aboutState]}>
+             states={[this.state.helloState, this.state.aboutState, this.state.addRichiesta ]}>
           <App/>
           </ConnectedUIRouter>
         </Provider>

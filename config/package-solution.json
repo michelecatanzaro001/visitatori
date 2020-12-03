@@ -1,13 +1,29 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "visitor-man-client-side-solution",
+    "name": "visitatori",
     "id": "d645b07e-1795-47cf-949b-3b742128b835",
-    "version": "1.0.0.0",
+    "version": "1.0.0.1",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     
     "isDomainIsolated": false,  
+   
+    "features": [{
+      "title": "asset-deployment-webpart-client-side-solution",
+      "description": "asset-deployment-webpart-client-side-solution",
+      "id": "73f1e189-e6d6-4f5f-b3c0-3cf9766e3bbb",      
+      "version": "1.0.0.1",
+      "assets": {
+        "elementManifests": [
+          "elements.xml"
+        ],
+        "elementFiles":[
+          "schema.xml"
+        ]
+      }
+    }],
+   
     "webApiPermissionRequests": [  
       {  
         "resource": "Microsoft Graph",  

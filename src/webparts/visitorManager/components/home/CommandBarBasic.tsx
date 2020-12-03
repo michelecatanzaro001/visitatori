@@ -26,7 +26,8 @@ export const CommandBarBasicExample: React.FunctionComponent = () => {
     const activeClass = "active";
     const helloSref = useSrefActive("hello", null, activeClass);
     const aboutSref = useSrefActive("about", null, activeClass);
-
+    const addRichiestaSref = useSrefActive("addRichiesta", null, activeClass);
+    
     
     return (
         <div>
@@ -38,20 +39,15 @@ export const CommandBarBasicExample: React.FunctionComponent = () => {
                     onClick:  helloSref.onClick
                 },{
                     key: 'about',
-                    text: 'about',
+                    text: 'About',
                     iconProps: { iconName: 'Game' },
                     onClick:  aboutSref.onClick
                 },{
                     key: 'inserisci',
-                    text: 'inserisci',
+                    text: 'Inserisci richiesta accesso',
                     iconProps: { iconName: 'Add' },
-                    href: '/inserisci'
-                },{
-                    key: 'apri',
-                    text: 'apri',
-                    iconProps: { iconName: 'OpenFile' },
-                    href: '/apri'
-                }]}
+                    onClick:  addRichiestaSref.onClick
+                } ]}
 
                 farItems={_farItems}
                 ariaLabel="Use left and right arrow keys to navigate between commands"
