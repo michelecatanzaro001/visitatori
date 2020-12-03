@@ -4,6 +4,8 @@ import { AadTokenProviderFactory } from "@microsoft/sp-http";
 import { sp } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists/web";
+import { IBasePermissions } from "@pnp/sp/security";
+ 
 
 export interface IListServices {
     configure(webUrl: string, listId: string);
@@ -55,4 +57,6 @@ export class ListService {
     public getLists(): Promise<any[]> {
         return sp.web.lists();
     }
+
+   
 }

@@ -17,6 +17,8 @@ import { ComponentServices } from './services/ComponentServices';
 import { ListService } from './services/ListService';
 import { Logger, LogLevel, ConsoleListener } from "@pnp/logging";
 import { initializeIcons } from '@uifabric/icons';
+import { MSGraphClient } from '@microsoft/sp-http';
+import { TeamsServices } from './services/TeamsServices';
 
 export interface IVisitorManagerWebPartProps {
   // il valore di default sta dentro il manifest
@@ -38,17 +40,18 @@ export default class VisitorManagerWebPart extends BaseClientSideWebPart<IVisito
     initializeIcons();
     try {
       const serviceScope = await ComponentServices.init(this.context, this.properties, (startup, ctx, props) => {
-        
         console.log ("  this.properties.absoluteUrlFieldLabel ->" +  this.properties.absoluteurl );
-
         // Register a new scoped instance of the service
         startup.registerScopedService(ListService.serviceKey, ListService);
         // Configure the service instance with the component specific properties
         startup.configureService(ListService.serviceKey, service => {
           service.configure(ctx.pageContext.web.absoluteUrl,  this.properties.absoluteurl );
         });
+        
         // Must return a resolved promise 
         // (useless here but needed in case on async needs in the config process)
+        startup.registerScopedService(TeamsServices.serviceKey, TeamsServices);
+        
         return Promise.resolve();
       });
     }
@@ -59,6 +62,21 @@ export default class VisitorManagerWebPart extends BaseClientSideWebPart<IVisito
      // optional, we are setting up the @pnp/logging for debugging
       Logger.activeLogLevel = LogLevel.Info;
       Logger.subscribe(new ConsoleListener());
+
+     try{ 
+      this.context.msGraphClientFactory
+      .getClient()
+      .then((client: MSGraphClient): void => {
+        // get information about the current user from the Microsoft Graph
+        client
+          .api('/me')
+          .get((error, response: any, rawResponse?: any) => {
+            console.log (" me"+ response ) ;
+        });
+      });
+       } catch (error) {
+        console.log('msGraphClientFactory : errore ', error);
+      }
 
     return super.onInit();
   }

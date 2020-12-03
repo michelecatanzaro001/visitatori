@@ -4,4 +4,5 @@ cmd /c  gulp bundle
 
 cmd /c  gulp package-solution  
 
-explorer .
+cmd /c gulp serve --nobrowser 
+
