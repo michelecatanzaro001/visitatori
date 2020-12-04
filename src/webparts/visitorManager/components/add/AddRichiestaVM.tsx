@@ -25,6 +25,7 @@ import { ComponentServices } from '../../services/ComponentServices';
 import { ServiceScope } from "@microsoft/sp-core-library";
 import { TeamsServices } from "../../services/TeamsServices";
  
+import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
 const columnProps: Partial<IStackProps> = {
   tokens: { childrenGap: 10 },
@@ -130,6 +131,7 @@ const [selectedKey, setSelectedKey] = React.useState<string | number | undefined
  * 
  */
 const [count, setCount] = React.useState(0);  
+const [listaUtenti, setListaUtenti] = React.useState([]);  
 
 const ts  = ComponentServices.serviceScope.consume( TeamsServices.serviceKey );  
 
@@ -151,6 +153,14 @@ async function fetchNewTextC(a, b) {
       setCount(1); 
       ts.getMyDetails().then((res) => {
         formik.setFieldValue( "nome" ,  res.displayName );     
+      })
+      ts.getAllUserOrg().then((users:MicrosoftGraph.User[]) => {
+        let out =[];
+        for (const element of users ) {
+          out = out.concat({ key : element.id , text : element.displayName })
+        }; 
+         setListaUtenti(out);   
+        console.log( users )
       })
   };
     
@@ -209,10 +219,10 @@ async function fetchNewTextC(a, b) {
           <ComboBox
                 style={comboBoxStyle}
                 selectedKey={selectedKey}
-                label="Controlled single-select ComboBox (allowFreeform: T)"
+                label="Dipentente da incontrare"
                 allowFreeform
                 autoComplete="on"
-                options={items}
+                options={listaUtenti}
                 onChange={onChange}
               />
 

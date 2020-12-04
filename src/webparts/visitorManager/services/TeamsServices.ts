@@ -4,6 +4,7 @@ import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
 interface ITeamsServices {
     getMyDetails(): Promise< MicrosoftGraph.User>;
+    getAllUserOrg(): Promise< MicrosoftGraph.User[]>
 }
 
 export class TeamsServices  implements ITeamsServices {
@@ -30,4 +31,19 @@ export class TeamsServices  implements ITeamsServices {
             });
         });
     }
+
+    public getAllUserOrg(): Promise< MicrosoftGraph.User[]> {
+        return new Promise< MicrosoftGraph.User[] >((resolve, reject) => {
+            this._msGraphClientFactory.getClient()
+            .then((_msGraphClient: MSGraphClient) => {
+                _msGraphClient.api('/users')
+                .get((error, res , rawResponse?: any) => {
+                    let user:[MicrosoftGraph.User] = res.value;
+                    resolve(user);
+                });
+            });
+        });
+    }
+
+
 }
